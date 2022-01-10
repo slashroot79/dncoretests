@@ -1,0 +1,10 @@
+version: '3.4'
+
+services:
+  webapplication:
+    image: ${DOCKER_REGISTRY-}webapplication
+    environment:
+      DB_UPSTREAM: http://${DOCKER_GATEWAY_HOST:-host.docker.internal}:1433
+    build:
+      context: .
+      dockerfile: WebApplication/Dockerfile
